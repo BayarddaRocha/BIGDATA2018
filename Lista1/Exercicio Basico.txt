@@ -1,0 +1,160 @@
+﻿trtrExercício 1 
+
+?????
+
+multiplica 2 3 + 5
+2 + multiplica 2 3 + 1
+
+Exercício 2
+mult3 x =  (x `rem` 3 == 0)
+
+Exerc 3 
+mult5 x =  (x `rem` 5 == 0)
+
+Exerc 4
+mult35 x =  (x `rem` 3 == 0) && (x `rem` 5 == 0)
+
+Exerc 5
+validaNum x = ( x < (-1)) || (x > 1 && x `rem` 2 == 0)
+
+Exerc 6 
+
+?????????????
+
+Exerc 7 
+metadeSeno :: Double -> (Double, Double)
+metadeSeno x = (sqrt((1-cos(x))/2), -sqrt((1+cos(x))/2))
+
+
+Exerc 8
+bissexto ::  -> Bool
+bissexto ano = (ano `rem` 400 == 0) || ((ano `rem` 4 == 0) && (ano `rem` 100 /= 0))
+main = do
+
+  let listaBissexto = [ano | ano <- [1..2018], bissexto ano]
+   
+  print (listaBissexto)
+   
+Exerc 9
+bissexto :: Integer -> Bool
+bissexto ano = (ano `rem` 400 == 0) || ((ano `rem` 4 == 0) && (ano `rem` 100 /= 0))
+main = do
+  let listaBissexto = [ano | ano <- [1..2018], bissexto ano]
+  print (take 10 listaBissexto)
+
+Exerc 9-A
+bissexto :: Integer -> Bool
+bissexto ano = (ano `rem` 400 == 0) || ((ano `rem` 4 == 0) && (ano `rem` 100 /= 0))
+main = do
+  let listaBissexto = [ano | ano <- [1..2018], bissexto ano]
+  print (drop (length (listaBissexto) - 10) listaBissexto)
+
+Exerc 10
+bissexto :: Integer -> Bool
+
+bissexto ano = (ano `rem` 400 == 0) || ((ano `rem` 4 == 0) && (ano `rem` 100 /= 0))
+
+main = do
+  
+  let listaBissexto = [ano | ano <- [1..2018], bissexto ano]
+  
+  let qtdeTupla1 = div (length listaBissexto) 2
+  
+  let qtdeTupla2 = (length listaBissexto) - qtdeTupla1
+  
+  let tuplaBissexto = [take qtdeTupla1 listaBissexto,drop (length (listaBissexto) - qtdeTupla2) listaBissexto]
+  print (tuplaBissexto)
+
+Exerc 11
+
+???
+
+Exerc 12
+
+????
+
+Funções
+
+Exerc 1 
+
+ehTriangulo :: Int -> Int -> Int -> Bool
+
+ehTriangulo x y z = ((z+y)>z && (x+z)>y && (y+z)>x)
+
+
+Exerc 2
+
+tipoTriangulo :: Int -> Int -> Int -> String
+
+tipoTriangulo x y z 
+ 
+ | z+y<z || x+z<y || y+z<x = "Nao Triangulo"
+ 
+ | x==y && x==z && y==z    = "Equilatero"
+ 
+ | x==y || x==z || y==z    = "Isoceles"
+ 
+ | x/=y && x/=z && y/=z    = "Escaleno"
+ 
+
+
+Exerc 4
+primo :: Int -> Bool
+primo n = [x | x<-[1..n], n `mod`x==0]  == [1,n]
+
+
+Exerc 5
+somaDigito :: Int -> Int
+
+somaDigito 0 = 0
+
+somaDigito n = (n `mod`10 ) + somaDigito (n `div` 10)
+
+Exerc 6
+persistNum :: Int -> Int
+
+listaSoma :: Int -> [Int]
+
+somaDigito :: Int -> Int
+
+somaDigito 0 = 0 
+somaDigito n = (n `mod`10 ) + somaDigito (n `div` 10)
+
+listaSoma n 
+ 
+  | n<10 = [n] 
+ 
+  | otherwise = n: listaSoma (somaDigito n)
+
+persistNum n = length (listaSoma n) - 1 
+
+main = do 
+  
+  print (persistNum 479)
+
+Exerc 7
+coefBinomial :: Int -> Int -> Int
+
+fatorial :: Int -> Int
+
+fatorial 0 = 1
+
+fatorial 1 = 1
+
+fatorial n = fatorial' n 1
+ 
+ where
+
+  fatorial' 1 r = r
+  
+  fatorial' n r = fatorial' (n-1) (n*r)
+
+coefBinomial m n
+
+  | m < n = error "m < n"
+  
+  | otherwise = fatorial m `div` (fatorial n * fatorial (m-n))
+
+main = do
+  
+  print (coefBinomial 10 6)
